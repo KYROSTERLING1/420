@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KYRO GAMES — Temple Subway Dash</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- AUDIO ASSETS (EXACT FILENAMES) -->
+    <audio id="snd-1" src="1.MP3" preload="auto"></audio>
+    <audio id="snd-2" src="2.MP3" preload="auto"></audio>
+    <audio id="snd-3" src="3.MP3" preload="auto"></audio>
+    <audio id="snd-4" src="4.MP3" preload="auto"></audio>
+    <audio id="snd-win" src="WINNING.MP3" preload="auto"></audio>
+
+    <!-- 1. KYRO GAMES ANIMATED POPUP -->
+    <div id="splash-screen">
+        <div class="splash-box">
+            <div class="kyro-orbit"></div>
+            <h1 class="kyro-logo">KYRO GAMES</h1>
+            <p class="kyro-tag">ULTRA 3D ARCADE ENGINE</p>
+        </div>
+    </div>
+
+    <!-- 2. HOME MENU -->
+    <div id="home-screen" class="screen hidden">
+        <div class="home-container">
+            <!-- Standing 1.JPG Character -->
+            <div class="character-stage">
+                <div class="glow-ring"></div>
+                <img id="home-hero-img" src="1.JPG" alt="1.JPG" class="standing-hero">
+                <div class="stage-pill">LEVEL <span id="home-lvl-badge">1</span> READY</div>
+            </div>
+
+            <!-- Menu Buttons & Weather -->
+            <div class="menu-panel">
+                <h2 class="title-banner">TEMPLE SUBWAY</h2>
+
+                <div class="weather-picker">
+                    <label for="weather-select">WEATHER MODE</label>
+                    <select id="weather-select">
+                        <option value="sunny">☀️ Sunny Emerald Valley</option>
+                        <option value="rain">🌧️ Rainy Forest Storm</option>
+                        <option value="snow">❄️ Snowy Alpine Peaks</option>
+                        <option value="spring">🌸 Spring Meadow</option>
+                        <option value="volcanic">🌋 Volcanic Ash Ridge</option>
+                    </select>
+                </div>
+
+                <button id="btn-play" class="btn btn-play">▶ PLAY LEVEL <span id="btn-play-lvl">1</span></button>
+                <button id="btn-levels" class="btn btn-levels">🗺️ LEVELS (1–100)</button>
+                <button id="btn-exit" class="btn btn-exit">✖ EXIT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 100 LEVELS SCREEN -->
+    <div id="levels-screen" class="screen hidden">
+        <div class="levels-top">
+            <h2>100 LEVELS</h2>
+            <button id="btn-back-home" class="btn btn-small">⬅ HOME</button>
+        </div>
+        <div id="levels-grid" class="levels-grid"></div>
+    </div>
+
+    <!-- 4. IN-GAME HUD -->
+    <div id="game-hud" class="hidden">
+        <div class="hud-bar">
+            <div class="hud-chip">LVL <span id="hud-lvl">1</span></div>
+            <div class="hud-chip">🪙 <span id="hud-coins">0</span> / <span id="hud-goal">20</span></div>
+            <div class="hud-chip">🏁 <span id="hud-progress">0</span>%</div>
+            <button id="btn-hud-home" class="btn btn-small btn-exit">🏠 EXIT TO HOME</button>
+        </div>
+
+        <div id="funny-toast" class="hidden">Bonk!</div>
+    </div>
+
+    <!-- 5. LEVEL END / GAME OVER MODAL -->
+    <div id="result-screen" class="screen hidden">
+        <div class="result-card">
+            <h2 id="result-title">FINISH LINE CROSSED!</h2>
+            <div id="result-stars" class="stars-big">⭐⭐⭐</div>
+            <p id="result-msg">Coins: 20 / 20</p>
+            <div class="result-actions">
+                <button id="btn-replay" class="btn btn-levels">↻ PLAY AGAIN</button>
+                <button id="btn-next-lvl" class="btn btn-play">NEXT LEVEL ➔</button>
+                <button id="btn-result-home" class="btn btn-small">🏠 HOME</button>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="scene-canvas"></canvas>
+    <script src="game.js"></script>
+</body>
+</html>
